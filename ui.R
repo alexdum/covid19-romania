@@ -19,7 +19,8 @@ ui <- shinyUI(
         tags$meta(name = "author", content = "Alexandru Dumitrescu"),
         tags$meta(name = "viewport", content = "width=device-width, initial-scale=1.0")
       ),
-      navbarPage("Romania COVID-19", collapsible = T, fluid = T,id = "tabs", position =  "fixed-top",
+      useShinyjs(),
+      navbarPage("Romania COVID-19", collapsible = T, fluid = T, id = "tabs", position =  "fixed-top",
                  selected = "#about",
                  
                  # Statistics & Facts ------------------------------------------------------
