@@ -1,7 +1,6 @@
 about_ui <- tabPanel("About",icon = icon("question-circle"), value = "#about", id = "#about",
                      
-                     sidebarLayout(
-                       
+                     sidebarLayout(fluid = T,
                        sidebarPanel(
                          width = 2,
                          h3(format(updd, "%b %d, %Y")),

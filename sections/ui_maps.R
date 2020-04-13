@@ -1,5 +1,5 @@
 maps_ui <- tabPanel("Maps", icon = icon("layer-group"), value = "#maps",
-                    sidebarLayout(
+                    sidebarLayout(fluid = T,
                       
                       sidebarPanel(width = 2,
                                    h3(format(updd, "%b %d, %Y")),

@@ -1,5 +1,5 @@
 facts_ui <- tabPanel("Statistics & Facts", icon = icon("bar-chart"), value = "#facts", id =  "#facts",
-                     sidebarLayout(
+                     sidebarLayout(fluid = T,
                        
                        sidebarPanel(width = 2,
                                     h3(format(updd, "%b %d, %Y")),
