@@ -8,25 +8,25 @@ server <- function(input, output, session) {
     #url tabs
     source(file = "utils/tabs_url.R", local = T)
     
-# 
-#     nodes$case_no <- paste("#", nodes$case_no)
-#     nodes$Group <- links$source
-#     nodes$Nodesize <- 5
-# 
-#     links <- links - 1
-#     links$value <- 4
-# 
-# 
-#     output$force <- renderForceNetwork({
-# 
-#       forceNetwork(Links = links, Nodes = nodes,
-#                    Source = "source", Nodesize = "Nodesize",
-#                    Target = "target", Value = "value", NodeID = "case_no",
-#                    Group = "source_no", zoom = T, arrows = T, legend = F,
-#                    bounded = F,  linkColour = "black", opacity = 1, opacityNoHover = 1,
-#                    fontSize = 14, charge = -15, fontFamily = "arial",
-#                    height = 280, width = 280, linkDistance = 60)
-#     })
+    # 
+    #     nodes$case_no <- paste("#", nodes$case_no)
+    #     nodes$Group <- links$source
+    #     nodes$Nodesize <- 5
+    # 
+    #     links <- links - 1
+    #     links$value <- 4
+    # 
+    # 
+    #     output$force <- renderForceNetwork({
+    # 
+    #       forceNetwork(Links = links, Nodes = nodes,
+    #                    Source = "source", Nodesize = "Nodesize",
+    #                    Target = "target", Value = "value", NodeID = "case_no",
+    #                    Group = "source_no", zoom = T, arrows = T, legend = F,
+    #                    bounded = F,  linkColour = "black", opacity = 1, opacityNoHover = 1,
+    #                    fontSize = 14, charge = -15, fontFamily = "arial",
+    #                    height = 280, width = 280, linkDistance = 60)
+    #     })
     
     # nodes$source_no[is.na(nodes$source_no) & !is.na(nodes$country_of_infection) & nodes$country_of_infection != "România"] <- nodes$country_of_infection[is.na(nodes$source_no) & !is.na(nodes$country_of_infection) & nodes$country_of_infection != "România"]
     # 
@@ -61,11 +61,11 @@ server <- function(input, output, session) {
     })
     
     output$dygraph1 <- renderDygraph({
-    
-     
+      
+      
       p <- dygraph(#main = "Romania - daily new confirmed and recovered cases of COVID-19",
         data.table::data.table(cum.day[,c(1,5,6,7)])) 
-       p2 <- p %>% dySeries("cum_sum", label = "Cases", color = "red") %>%
+      p2 <- p %>% dySeries("cum_sum", label = "Cases", color = "red") %>%
         dySeries("recover_sum", label = "Recovered", color  = "green") %>%
         dySeries("death_sum", label = "Deaths", color  = "#636363")  %>%
         dyAxis("y", drawGrid = T,  label = "Overall number of cases") %>%
@@ -73,14 +73,14 @@ server <- function(input, output, session) {
         dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 40, max(dats.nod)))
       
       if (input$checkbox_logCaseEvolution) {
-       p2 <-p %>% dySeries("cum_sum", label = "Cases", color = "red") %>%
-         dySeries("recover_sum", label = "Recovered", color  = "green") %>%
-         dySeries("death_sum", label = "Deaths", color  = "#636363")  %>%
-         dyAxis("y", drawGrid = T, logscale = T, label = "Overall number of cases  (log scale)") %>%
-         dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 40, max(dats.nod)))
-     
+        p2 <-p %>% dySeries("cum_sum", label = "Cases", color = "red") %>%
+          dySeries("recover_sum", label = "Recovered", color  = "green") %>%
+          dySeries("death_sum", label = "Deaths", color  = "#636363")  %>%
+          dyAxis("y", drawGrid = T, logscale = T, label = "Overall number of cases  (log scale)") %>%
+          dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 40, max(dats.nod)))
+        
       }
-    
+      
       return(p2)
     })
     
@@ -163,9 +163,7 @@ server <- function(input, output, session) {
     
     
     
-    
-    
-    
   })
+  
   
 }
