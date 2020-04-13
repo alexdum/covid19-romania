@@ -94,7 +94,7 @@ output$overview_map <- renderLeaflet(map)
 # decesed -----------------------------------------------------------------
 
 
-map2 <-  leaflet(addLabel(counties.latest)) %>%
+map2 <-  leaflet(addLabel(counties.latest2)) %>%
   #setView(25, 46, zoom = 6) %>%
   #fitBounds(20, 43.5, 30, 48.2) %>%
   #setMaxBounds(20, 43.5, 30, 48.2) %>%
