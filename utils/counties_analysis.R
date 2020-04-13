@@ -45,14 +45,14 @@ counties <- counties %>%
   dplyr::mutate(case_date = as.Date(case_date)) 
 # %>%
 #   
-counties2 <- counties %>% dplyr::filter(case_date >= as.Date("2020-03-22"))
+counties2 <- counties %>% dplyr::filter(case_date >= as.Date("2020-03-22") & case_date <= as.Date(max(nodes$`Dată deces`, na.rm = T)))
 
 
 # counties <- counties[counties$death_sum > 0,]
-
-
 counties.latest <- counties[counties$case_date == max(counties$case_date), ]
-counties.latest2 <- counties[counties$case_date == as.Date(max(nodes$`Dată deces`, na.rm = T)), ]
+
+# for deceased map
+counties.latest2 <- counties2[counties2$case_date == as.Date(max(nodes$`Dată deces`, na.rm = T)), ]
 
 
 
