@@ -12,7 +12,7 @@ ui <- shinyUI(
     fluidPage(
       tags$head(
         includeHTML("google-analytics.html"),
-        #tags$style(type = "text/css", "body {padding-top: 70px;}"),
+        tags$style(type = "text/css", "body {padding-top: 70px;}"),
         tags$meta(charset = "UTF-8"),
         tags$meta(name = "description", content = "Relevant facts and statistics about COVID-19 spread in Romania."),
         tags$meta(name = "keywords", content = "COVID-19, Romania, spread maps, relevant graphs"),
