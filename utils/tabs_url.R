@@ -1,6 +1,13 @@
 # When we change from one `tabPanel` to another, update the URL hash
 observeEvent(input$tabs, {
   
+  # menu collapse back menu after selection
+  shinyjs::runjs('
+      var elem = document.getElementsByClassName("navbar-collapse")[0]
+      elem.setAttribute("aria-expanded", "false");
+      elem.setAttribute("class", "navbar-collapse collapse");
+    ')
+  
   # No work to be done if input$tabs and the hash are already the same
   if (getUrlHash() == input$tabs) return()
   
@@ -28,4 +35,7 @@ observeEvent(getUrlHash(), {
   if (hash %in% valid) {
     updateTabsetPanel(session, "tabs", hash)
   }
+  
+  
+  
 })
