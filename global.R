@@ -12,7 +12,7 @@ options(gargle_oob_default = TRUE, gargle_oauth_email = "alexandru.dumitrescu@gm
 # https://towardsdatascience.com/create-a-coronavirus-app-using-r-shiny-and-plotly-6a6abf66091d
 # https://github.com/eparker12/nCoV_tracker
 # https://deanattali.com/
-
+  # https://www.rivm.nl/en/novel-coronavirus-covid-19/current-information-about-novel-coronavirus-covid-19
 #relation.cases <- jsonlite::fromJSON("https://covid19.geo-spatial.org/api/statistics/getCaseRelations")
 
 
