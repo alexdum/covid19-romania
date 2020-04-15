@@ -108,7 +108,7 @@ server <- function(input, output, session) {
       
       fig <- fig %>% plotly::layout(xaxis = x, yaxis = y,
                                     shapes = list(plotly.vline(x = mean.cont, y = 0.95)),
-                                    annotations = plotly.vtext(x = mean.cont, y = 20))
+                                    annotations = plotly.vtext(x = mean.cont, y = 30))
       fig
     })
     
@@ -121,7 +121,7 @@ server <- function(input, output, session) {
       
       fig <- fig %>% plotly::layout(xaxis = x, yaxis = y,
                                     shapes = list(plotly.vline(x = mean.recov, y = 0.95)),
-                                    annotations = plotly.vtext(x = mean.recov, y = 10))
+                                    annotations = plotly.vtext(x = mean.recov, y = 15))
       fig
     })
     
@@ -132,7 +132,7 @@ server <- function(input, output, session) {
                              xbins = list( end = 90,   size = 5, start = 1))
       fig <- fig %>% plotly::layout(xaxis = x, yaxis = y,
                                     shapes = list(plotly.vline(x = mean.decs, y = 0.95)),
-                                    annotations = plotly.vtext(x = mean.decs, y = 15))
+                                    annotations = plotly.vtext(x = mean.decs, y = 30))
       fig
     })
     
