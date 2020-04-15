@@ -70,14 +70,14 @@ server <- function(input, output, session) {
         dySeries("death_sum", label = "Deaths", color  = "#636363")  %>%
         dyAxis("y", drawGrid = T,  label = "Overall number of cases") %>%
         dyOptions(stackedGraph = T) %>%
-        dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 40, max(dats.nod)))
+        dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 50, max(dats.nod)))
       
       if (input$checkbox_logCaseEvolution) {
         p2 <-p %>% dySeries("cum_sum", label = "Cases", color = "red") %>%
           dySeries("recover_sum", label = "Recovered", color  = "green") %>%
           dySeries("death_sum", label = "Deaths", color  = "#636363")  %>%
           dyAxis("y", drawGrid = T, logscale = T, label = "Overall number of cases  (log scale)") %>%
-          dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 40, max(dats.nod)))
+          dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 50, max(dats.nod)))
         
       }
       
