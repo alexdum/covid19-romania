@@ -9,7 +9,7 @@ source("sections/ui_maps.R", local = T)
 ui <- shinyUI(
   
   ui <- function(req) { 
-    fluidPage(
+    fluidPage(heme = "bootstrap.css",
       tags$head(
         includeHTML("google-analytics.html"),
         tags$style(type = "text/css", "body {padding-top: 70px;}"),
