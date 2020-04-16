@@ -52,10 +52,11 @@ server <- function(input, output, session) {
     output$dygraph <- renderDygraph({
       dygraph(#main = "Romania - daily new confirmed and recovered cases of COVID-19",
         data.table::data.table(cases.day),  ylab = "Number of cases") %>%
-        dySeries("case_no", label = "Cases", color = "red") %>%
-        dySeries("recover_no", label = "Recovered", color  = "green") %>%
-        dySeries("death_no", label = "Deaths", color  = "#636363") %>%
+        dySeries("case_no", label = "Cases", color = "red", stepPlot   = T, strokeWidth = 2) %>%
+        dySeries("recover_no", label = "Recovered", color  = "green", stepPlot   = T, strokeWidth = 2) %>%
+        dySeries("death_no", label = "Deaths", color  = "#636363", stepPlot   = T, strokeWidth = 2) %>%
         dyOptions(stackedGraph = T) %>%
+        dyLegend(show = "follow") %>%
         dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 50, max(dats.nod)))
       
     })
@@ -65,23 +66,24 @@ server <- function(input, output, session) {
       
       p <- dygraph(#main = "Romania - daily new confirmed and recovered cases of COVID-19",
         data.table::data.table(cum.day[,c(1,5,6,7)])) 
-      p2 <- p %>% dySeries("cum_sum", label = "Cases", color = "red") %>%
-        dySeries("recover_sum", label = "Recovered", color  = "green") %>%
-        dySeries("death_sum", label = "Deaths", color  = "#636363")  %>%
+      p2 <- p %>% dySeries("cum_sum", label = "Cases", color = "red", strokeWidth = 2) %>%
+        dySeries("recover_sum", label = "Recovered", color  = "green", strokeWidth = 2) %>%
+        dySeries("death_sum", label = "Deaths", color  = "#636363", strokeWidth = 2)  %>%
         dyAxis("y", drawGrid = T,  label = "Overall number of cases") %>%
-        dyOptions(stackedGraph = T) %>%
+        dyEvent("2020-03-22", "The first death cases reported", labelLoc = "top") %>%
+        dyOptions(stackedGraph = T, mobileDisableYTouch  = T) %>%
         dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 50, max(dats.nod)))
       
       if (input$checkbox_logCaseEvolution) {
-        p2 <- p %>% dySeries("cum_sum", label = "Cases", color = "red") %>%
-          dySeries("recover_sum", label = "Recovered", color  = "green") %>%
-          dySeries("death_sum", label = "Deaths", color  = "#636363")  %>%
+        p2 <- p %>% dySeries("cum_sum", label = "Cases", color = "red", fillGraph = T,  strokeWidth = 2) %>%
+          dySeries("recover_sum", label = "Recovered", color  = "green", fillGraph = T,  strokeWidth = 2) %>%
+          dySeries("death_sum", label = "Deaths", color  = "#636363", fillGraph = T,  strokeWidth = 2)  %>%
           dyLegend(show = "follow") %>%
-          dyHighlight(highlightCircleSize = 5, 
-                      highlightSeriesBackgroundAlpha = 0.2,
-                      hideOnMouseOut = FALSE) %>%
+          # dyHighlight(highlightCircleSize = 5, 
+          #             highlightSeriesBackgroundAlpha = 0.2,
+          #             hideOnMouseOut = FALSE) %>%
           dyAxis("y", drawGrid = T, logscale = T, label = "Overall number of cases  (log scale)") %>%
-          dyEvent("2020-03-22", "The first death cases reported", labelLoc = "bottom") %>%
+          dyEvent("2020-03-22", "The first death cases reported", labelLoc = "top") %>%
           dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 50, max(dats.nod))) 
         
       }
