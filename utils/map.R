@@ -17,14 +17,9 @@ addLabel <- function(data) {
 
 # confirmed ---------------------------------------------------------------
 
-
-
-map <-  leaflet(addLabel(counties.latest)) %>%
-  #setView(25, 46, zoom = 6) %>%
-  #fitBounds(20, 43.5, 30, 48.2) %>%
-  #setMaxBounds(20, 43.5, 30, 48.2) %>%
-  
+map <-  leaflet(addLabel(counties.latest), options = leafletOptions(minZoom = 6, maxZoom = 18)) %>%
   setView(25, 46, zoom = 6) %>%
+  setMaxBounds(20, 43.5, 30, 48.2) %>%
   addTiles() %>%
   addProviderTiles(providers$CartoDB.Positron, group = "Light") %>%
   addProviderTiles(providers$HERE.satelliteDay, group = "Satellite") %>%
@@ -38,7 +33,7 @@ map <-  leaflet(addLabel(counties.latest)) %>%
     icon    = "glyphicon glyphicon-globe", title = "Reset zoom",
     onClick = JS("function(btn, map){ map.setView([46, 25], 6); }"))) %>%
   addEasyButton(easyButton(
-    icon    = "glyphicon glyphicon-map-marker", title = "Locate Me",
+    icon    = htmltools::span(class = "star", htmltools::HTML("&target;")),title = "Locate Me",
     onClick = JS("function(btn, map){ map.locate({setView: true, maxZoom: 6}); }"))) 
 
 observe({
@@ -64,17 +59,17 @@ observe({
       group        = "Cases"
     )
   # %>%
-    # addCircleMarkers(
-    #   lng          = ~longitude,
-    #   lat          = ~latitude,
-    #   radius       = ~log(death_sum^((zoomLevel)-1)),
-    #   stroke       = FALSE,
-    #   color        = "#636363",
-    #   fillOpacity  = 0.5,
-    #   label        = ~label,
-    #   labelOptions = labelOptions(textsize = 15),
-    #   group        = "Deceased"
-    # ) 
+  # addCircleMarkers(
+  #   lng          = ~longitude,
+  #   lat          = ~latitude,
+  #   radius       = ~log(death_sum^((zoomLevel)-1)),
+  #   stroke       = FALSE,
+  #   color        = "#636363",
+  #   fillOpacity  = 0.5,
+  #   label        = ~label,
+  #   labelOptions = labelOptions(textsize = 15),
+  #   group        = "Deceased"
+  # ) 
   output$maps.text <- renderText(paste("Romania COVID-19 map number of confirmed cases by counties ",format(input$timeSlider,  "%b %d, %Y")))
   output$tabs.text <- renderText(paste("Romania COVID-19 number of confirmed and deceased cases ",format(input$timeSlider,  "%b %d, %Y")))
   
@@ -94,12 +89,9 @@ output$overview_map <- renderLeaflet(map)
 # decesed -----------------------------------------------------------------
 
 
-map2 <-  leaflet(addLabel(counties.latest2)) %>%
-  #setView(25, 46, zoom = 6) %>%
-  #fitBounds(20, 43.5, 30, 48.2) %>%
-  #setMaxBounds(20, 43.5, 30, 48.2) %>%
-  
+map2 <-  leaflet(addLabel(counties.latest2),  options = leafletOptions(minZoom = 6, maxZoom = 18) ) %>%
   setView(25, 46, zoom = 6) %>%
+  setMaxBounds(20, 43.5, 30, 48.2) %>%
   addTiles() %>%
   addProviderTiles(providers$CartoDB.Positron, group = "Light") %>%
   addProviderTiles(providers$HERE.satelliteDay, group = "Satellite") %>%
@@ -113,7 +105,7 @@ map2 <-  leaflet(addLabel(counties.latest2)) %>%
     icon    = "glyphicon glyphicon-globe", title = "Reset zoom",
     onClick = JS("function(btn, map){ map.setView([46, 25], 6); }"))) %>%
   addEasyButton(easyButton(
-    icon    = "glyphicon glyphicon-map-marker", title = "Locate Me",
+    icon    = htmltools::span(class = "star", htmltools::HTML("&target;")),title = "Locate Me",
     onClick = JS("function(btn, map){ map.locate({setView: true, maxZoom: 6}); }"))) 
 
 observe({
