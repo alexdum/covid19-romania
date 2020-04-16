@@ -73,7 +73,7 @@ server <- function(input, output, session) {
         dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 50, max(dats.nod)))
       
       if (input$checkbox_logCaseEvolution) {
-        p2 <-p %>% dySeries("cum_sum", label = "Cases", color = "red") %>%
+        p2 <- p %>% dySeries("cum_sum", label = "Cases", color = "red") %>%
           dySeries("recover_sum", label = "Recovered", color  = "green") %>%
           dySeries("death_sum", label = "Deaths", color  = "#636363")  %>%
           dyLegend(show = "follow") %>%
@@ -81,7 +81,8 @@ server <- function(input, output, session) {
                       highlightSeriesBackgroundAlpha = 0.2,
                       hideOnMouseOut = FALSE) %>%
           dyAxis("y", drawGrid = T, logscale = T, label = "Overall number of cases  (log scale)") %>%
-          dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 50, max(dats.nod)))
+          dyEvent("2020-03-22", "The first death cases reported", labelLoc = "bottom") %>%
+          dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 50, max(dats.nod))) 
         
       }
       
