@@ -161,12 +161,12 @@ server <- function(input, output, session) {
     
     names(cum.dayf) <- c("Date", "Currently confirmed", "Recovered","Deaths", "Cumulative confirmed", "Cumulative recovered", "Cumulative deaths")
     
-    output$cum <-  DT::renderDataTable(server = F, {
+    output$cum <-  DT::renderDataTable(server = F, 
       DT::datatable(cum.dayf, rownames = F, 
-                    extensions = 'Buttons', 
+                    extensions = c('Buttons',"Responsive"), 
                     options = list(dom = 'Bfrtip',pageLength = 15,
                                    buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
-    })
+    )
     
     
     
