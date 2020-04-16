@@ -81,7 +81,7 @@ observe({
   output$maps_data <-  DT::renderDataTable(server = T, {
     DT::datatable(data.sub[order(data.sub$case_sum, decreasing = T), c("county","case_date","case_no", "case_sum", "death_no", "death_sum" )], rownames = F, 
                   colnames = c("County", "Date", "Number of cases", "Overall number of cases", "Number of deaths", "Overall number of deaths"),
-                  extensions = 'Buttons', 
+                  extensions = c('Buttons',"Responsive"), 
                   options = list(dom = 'Bfrtip', pageLength = 41,
                                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
   })
@@ -156,7 +156,7 @@ observe({
   output$maps_data <-  DT::renderDataTable(server = T, {
     DT::datatable(data.sub[order(data.sub$death_sum, decreasing = T), c("county","case_date","case_no", "case_sum", "death_no", "death_sum" )], rownames = F, 
                   colnames = c("County", "Date", "Number of cases", "Overall number of cases", "Number of deaths", "Overall number of deaths"),
-                  extensions = 'Buttons', 
+                  extensions = c('Buttons',"Responsive"), 
                   options = list(dom = 'Bfrtip', pageLength = 41,
                                  buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
   })
