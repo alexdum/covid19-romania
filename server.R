@@ -56,7 +56,7 @@ server <- function(input, output, session) {
         dySeries("recover_no", label = "Recovered", color  = "green") %>%
         dySeries("death_no", label = "Deaths", color  = "#636363") %>%
         dyOptions(stackedGraph = T) %>%
-        dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 40, max(dats.nod)))
+        dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 50, max(dats.nod)))
       
     })
     
@@ -76,6 +76,10 @@ server <- function(input, output, session) {
         p2 <-p %>% dySeries("cum_sum", label = "Cases", color = "red") %>%
           dySeries("recover_sum", label = "Recovered", color  = "green") %>%
           dySeries("death_sum", label = "Deaths", color  = "#636363")  %>%
+          dyLegend(show = "follow") %>%
+          dyHighlight(highlightCircleSize = 5, 
+                      highlightSeriesBackgroundAlpha = 0.2,
+                      hideOnMouseOut = FALSE) %>%
           dyAxis("y", drawGrid = T, logscale = T, label = "Overall number of cases  (log scale)") %>%
           dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 50, max(dats.nod)))
         
