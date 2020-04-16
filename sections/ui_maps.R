@@ -24,6 +24,9 @@ maps_ui <- tabPanel("Maps", icon = icon("layer-group"), value = "#maps",
                                        timeFormat = "%d.%m.%Y",
                                        animate    = animationOptions(loop = F)
                                      ),
+                                     class = "slider",
+                                     width = 12,
+                                     style = 'padding-left:15px; padding-right:15px;',
                                      helpText("Press the play button for animation.", 
                                               style = "text-align:right;")
                                    )
@@ -42,6 +45,9 @@ maps_ui <- tabPanel("Maps", icon = icon("layer-group"), value = "#maps",
                                       timeFormat = "%d.%m.%Y",
                                       animate    = animationOptions(loop = F)
                                     ),
+                                    class = "slider",
+                                    width = 12,
+                                    style = 'padding-left:15px; padding-right:15px;',
                                     helpText("Press the play button for animation.",
                                              style = "text-align:right;")
                                   )
