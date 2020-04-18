@@ -54,12 +54,16 @@ nodes <- nodes %>% dplyr::filter(!is.na(`Dată diagnostic`))
 dats.nod <- as.Date(unique(as.character(nodes$`Dată diagnostic`)))
 
 
+# days analysis -----------------------------------------------------------
+
+source(file = "utils/days_analysis.R", local = T)
+
 # facts data --------------------------------------------------------------
 
 # pentru situația la zi
 #infect <- length(nodes$status[nodes$status == "Confirmat"])
 infect <- length(nodes$`Dată diagnostic`)
-recov <- length(na.omit(nodes$Vindecat[nodes$Vindecat == "Da"]))
+recov <- daily.cases$Vindecati[daily.cases$Data == max(daily.cases$Data)]
 updd <- dats.nod[length(dats.nod)]
 decs <-  length(na.omit(nodes$`Dată deces`))
 
@@ -95,6 +99,7 @@ cum.day <- cum.day %>%
 # county analysis ---------------------------------------------------------
 
 source(file = "utils/counties_analysis.R", local = T)
+
 
 
 # statistics and facts ----------------------------------------------------
