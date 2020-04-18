@@ -15,9 +15,11 @@ addLabel <- function(data) {
 }
 
 
+
 # confirmed ---------------------------------------------------------------
 
-map <-  leaflet(addLabel(counties.latest), options = leafletOptions(minZoom = 6, maxZoom = 18)) %>%
+map <-  leaflet( 
+                options = leafletOptions(minZoom = 6, maxZoom = 18)) %>%
   setView(25, 46, zoom = 6) %>%
   setMaxBounds(20, 43.5, 30, 48.2) %>%
   addTiles() %>%
@@ -82,14 +84,17 @@ observe({
   })
 })
 
-output$overview_map <- renderLeaflet(map)
+output$overview_map <- renderLeaflet(
+  return(map)
+)
 
 
 
 # decesed -----------------------------------------------------------------
 
 
-map2 <-  leaflet(addLabel(counties.latest2),  options = leafletOptions(minZoom = 6, maxZoom = 18) ) %>%
+map2 <-  leaflet( 
+                 options = leafletOptions(minZoom = 6, maxZoom = 18) ) %>%
   setView(25, 46, zoom = 6) %>%
   setMaxBounds(20, 43.5, 30, 48.2) %>%
   addTiles() %>%
@@ -154,5 +159,7 @@ observe({
   })
 })
 
-output$overview_map2 <- renderLeaflet(map2)
+output$overview_map2 <- renderLeaflet(
+  return(map2)
+)
 
