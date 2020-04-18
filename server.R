@@ -50,34 +50,34 @@ server <- function(input, output, session) {
     # 
     
     output$dygraph <- renderDygraph({
+      
       dygraph(#main = "Romania - daily new confirmed and recovered cases of COVID-19",
-        data.table::data.table(cases.day),  ylab = "Number of cases") %>%
-        dySeries("case_no", label = "Cases", color = "red", stepPlot   = T, strokeWidth = 2) %>%
-        dySeries("recover_no", label = "Recovered", color  = "green", stepPlot   = T, strokeWidth = 2) %>%
-        dySeries("death_no", label = "Deaths", color  = "#636363", stepPlot   = T, strokeWidth = 2) %>%
+        data.table::data.table(daily.cases.days),  ylab = "Number of cases") %>%
+        dySeries("Cazuri", label = "Cases", color = "red", stepPlot   = T, strokeWidth = 2) %>%
+        dySeries("vindecati_daily", label = "Recovered", color  = "green", stepPlot   = T, strokeWidth = 2) %>%
+        dySeries("Morti pe zi", label = "Deaths", color  = "#636363", stepPlot   = T, strokeWidth = 2) %>%
         dyOptions(stackedGraph = T) %>%
         dyLegend(show = "follow") %>%
-        dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 50, max(dats.nod)))
+        dyRangeSelector(height = 40, dateWindow = c(max(as.Date(daily.cases$Data)) - 50, as.Date(max(daily.cases$Data))))
       
     })
     
     output$dygraph1 <- renderDygraph({
       
-      
       p <- dygraph(#main = "Romania - daily new confirmed and recovered cases of COVID-19",
-        data.table::data.table(cum.day[,c(1,5,6,7)])) 
-      p2 <- p %>% dySeries("cum_sum", label = "Cases", color = "red", strokeWidth = 2) %>%
-        dySeries("recover_sum", label = "Recovered", color  = "green", strokeWidth = 2) %>%
-        dySeries("death_sum", label = "Deaths", color  = "#636363", strokeWidth = 2)  %>%
+        data.table::data.table(daily.cases.cum))
+      p2 <- p %>% dySeries("Total", label = "Cases", color = "red", strokeWidth = 2) %>%
+        dySeries("Vindecati", label = "Recovered", color  = "green", strokeWidth = 2) %>%
+        dySeries("Morti", label = "Deaths", color  = "#636363", strokeWidth = 2)  %>%
         dyAxis("y", drawGrid = T,  label = "Overall number of cases") %>%
         dyEvent("2020-03-22", "The first death cases reported", labelLoc = "top") %>%
         dyOptions(stackedGraph = T, mobileDisableYTouch  = T) %>%
         dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 50, max(dats.nod)))
       
       if (input$checkbox_logCaseEvolution) {
-        p2 <- p %>% dySeries("cum_sum", label = "Cases", color = "red", fillGraph = T,  strokeWidth = 2) %>%
-          dySeries("recover_sum", label = "Recovered", color  = "green", fillGraph = T,  strokeWidth = 2) %>%
-          dySeries("death_sum", label = "Deaths", color  = "#636363", fillGraph = T,  strokeWidth = 2)  %>%
+        p2 <- p %>% dySeries("Total", label = "Cases", color = "red", fillGraph = T,  strokeWidth = 2) %>%
+          dySeries("Vindecati", label = "Recovered", color  = "green", fillGraph = T,  strokeWidth = 2) %>%
+          dySeries("Morti", label = "Deaths", color  = "#636363", fillGraph = T,  strokeWidth = 2)  %>%
           dyLegend(show = "follow") %>%
           # dyHighlight(highlightCircleSize = 5, 
           #             highlightSeriesBackgroundAlpha = 0.2,
@@ -85,8 +85,7 @@ server <- function(input, output, session) {
           dyAxis("y", drawGrid = T, logscale = T, label = "Overall number of cases  (log scale)") %>%
           dyEvent("2020-03-22", "The first death cases reported", labelLoc = "top") %>%
           dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 50, max(dats.nod))) 
-        
-      }
+        }
       
       return(p2)
     })
@@ -162,10 +161,10 @@ server <- function(input, output, session) {
     names(cum.dayf) <- c("Date", "Currently confirmed", "Recovered","Deaths", "Cumulative confirmed", "Cumulative recovered", "Cumulative deaths")
     
     output$cum <-  DT::renderDataTable(server = F, 
-      DT::datatable(cum.dayf, rownames = F, 
-                    extensions = c('Buttons',"Responsive"), 
-                    options = list(dom = 'Bfrtip',pageLength = 15,
-                                   buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
+                                       DT::datatable(cum.dayf, rownames = F, 
+                                                     extensions = c('Buttons',"Responsive"), 
+                                                     options = list(dom = 'Bfrtip',pageLength = 15,
+                                                                    buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
     )
     
     
