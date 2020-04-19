@@ -53,8 +53,8 @@ facts_ui <- tabPanel("Statistics & Facts", icon = icon("bar-chart"), value = "#f
                                              
                                       ),
                                       column(6,
-                                             h4("Age of recovered", style = "text-align:center;"),
-                                             plotly::plotlyOutput("hist.recov")
+                                             h4("Breakdown", style = "text-align:center;"),
+                                             plotly::plotlyOutput("pie_breakdown")
                                              
                                       )  
                                     ) ,
