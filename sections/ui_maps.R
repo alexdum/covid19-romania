@@ -14,17 +14,16 @@ maps_ui <- tabPanel("Maps", icon = icon("layer-group"), value = "#maps",
                                                          fluidRow(
                                                            h3(textOutput("maps.text")),
                                                            leafletOutput("overview_map"),
-                                                           div(style="width:85%;padding-left:7%;padding-right:7%",
-                                                               sliderInput(
-                                                                 "timeSlider",
-                                                                 label      = "Select date for the map",
-                                                                 min        = min(counties$case_date),
-                                                                 max        = max(counties$case_date),
-                                                                 value      = max(counties$case_date),
-                                                                 width      = "100%",
-                                                                 timeFormat = "%d.%m.%Y",
-                                                                 animate    = animationOptions(loop = F)
-                                                               )
+                                                           sliderInput(
+                                                             "timeSlider",
+                                                             label      = "Select date for the map",
+                                                             min        = min(counties$case_date),
+                                                             max        = max(counties$case_date),
+                                                             value      = max(counties$case_date),
+                                                             width      = "100%",
+                                                             timeFormat = "%d.%m.%Y",
+                                                             animate    = animationOptions(loop = F)
+                                                             
                                                            ),
                                                            class = "slider",
                                                            width = 12,
@@ -49,6 +48,7 @@ maps_ui <- tabPanel("Maps", icon = icon("layer-group"), value = "#maps",
                                                            ),
                                                            class = "slider",
                                                            width = 12,
+                                                           style = 'padding-left:15px; padding-right:15px;',
                                                            helpText("Press the play button for animation.",
                                                                     style = "text-align:right;")
                                                          )
