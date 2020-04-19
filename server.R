@@ -146,7 +146,10 @@ server <- function(input, output, session) {
       plotly::add_pie(hole = 0.6) %>% 
       plotly::layout(legend = list(orientation = "h",   # show entries horizontally
                            xanchor = "center",  # use center of legend as anchor
-                           x = 0.5))  
+                           x = 0.5),
+                     annotations = list(text = paste("Total cases", infect), "showarrow" = F,
+                                        font = list(color = 'red'))
+                    )
     output$pie_breakdown <- plotly::renderPlotly({
       fig.pie
     })
@@ -179,7 +182,9 @@ server <- function(input, output, session) {
     })
     
     
-    cum.dayf <- cum.day %>% dplyr::filter(diagnostic_date  > as.Date("2020-02-25"))
+    cum.dayf <- dplyr::left_join(daily.cases.days, daily.cases.cum, by = "Data") %>%
+                dplyr::mutate(Data = as.Date(Data))
+      
     
     names(cum.dayf) <- c("Date", "Currently confirmed", "Recovered","Deaths", "Cumulative confirmed", "Cumulative recovered", "Cumulative deaths")
     
