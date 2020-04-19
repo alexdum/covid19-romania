@@ -140,11 +140,11 @@ server <- function(input, output, session) {
     names(plotly.pie) <- "cases"
     
     
-    fig.pie <- plotly.pie %>% plot_ly(labels = c("Recovered", "Deceased", "Active"), values = ~cases,
+    fig.pie <- plotly.pie %>% plotly::plot_ly(labels = c("Recovered", "Deceased", "Active"), values = ~cases,
                                       marker = list(colors = c( "#fc4e2a", "green","#636363"),
                                                     line = list(color = '#FFFFFF', width = 1))) %>% 
-      add_pie(hole = 0.6) %>% 
-      layout(legend = list(orientation = "h",   # show entries horizontally
+      plotly::add_pie(hole = 0.6) %>% 
+      plotly::layout(legend = list(orientation = "h",   # show entries horizontally
                            xanchor = "center",  # use center of legend as anchor
                            x = 0.5))  
     output$pie_breakdown <- plotly::renderPlotly({
