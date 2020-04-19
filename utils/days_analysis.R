@@ -6,9 +6,9 @@ daily.latest <- read_sheet("1YxwFui0_HdcCT5ej6TuXACUUk42sButQfC563m0aPlQ",
                           sheet =  "Cazuri noi pe zile")
 
 # conditii care trebuie indeplinite pentru a scrie fisierul
-if (sum(!is.na(daily.latest$Data)) > sum(!is.na(daily.cases$Data)) |
-    sum(!is.na(daily.latest$Vindecati)) > sum(!is.na(daily.latest$Vindecati)) |
-    sum(!is.na(daily.latest$Cazuri)) > sum(!is.na(daily.cases$Cazuri)) ) {
+if (daily.latest$Morti[nrow(daily.latest)] != daily.cases$Morti[nrow(daily.cases)]  |
+    daily.latest$Vindecati[nrow(daily.latest)] != daily.cases$Vindecati[nrow(daily.cases)] |
+    daily.latest$Cazuri[nrow(daily.latest)] != daily.cases$Cazuri[nrow(daily.cases)] ) {
   
   saveRDS(daily.latest, "data/daily.cases.rds")
   daily.cases <- daily.latest
