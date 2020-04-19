@@ -58,7 +58,7 @@ server <- function(input, output, session) {
         dySeries("Morti pe zi", label = "Deaths", color  = "#636363", stepPlot   = T, strokeWidth = 2) %>%
         dyOptions(stackedGraph = T) %>%
         dyLegend(show = "follow") %>%
-        dyRangeSelector(height = 40, dateWindow = c(max(as.Date(daily.cases$Data)) - 50, as.Date(max(daily.cases$Data))))
+        dyRangeSelector(height = 40, dateWindow = c(max(as.Date(daily.cases$Data)) - 55, as.Date(max(daily.cases$Data))))
       
     })
     
@@ -70,9 +70,10 @@ server <- function(input, output, session) {
         dySeries("Vindecati", label = "Recovered", color  = "green", strokeWidth = 2) %>%
         dySeries("Morti", label = "Deaths", color  = "#636363", strokeWidth = 2)  %>%
         dyAxis("y", drawGrid = T,  label = "Overall number of cases") %>%
+        dyEvent("2020-03-05", "The first recovered cases reported", labelLoc = "top") %>%
         dyEvent("2020-03-22", "The first death cases reported", labelLoc = "top") %>%
         dyOptions(stackedGraph = T, mobileDisableYTouch  = T) %>%
-        dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 50, max(dats.nod)))
+        dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 55, max(dats.nod)))
       
       if (input$checkbox_logCaseEvolution) {
         p2 <- p %>% dySeries("Total", label = "Cases", color = "red", fillGraph = T,  strokeWidth = 2) %>%
@@ -83,9 +84,10 @@ server <- function(input, output, session) {
           #             highlightSeriesBackgroundAlpha = 0.2,
           #             hideOnMouseOut = FALSE) %>%
           dyAxis("y", drawGrid = T, logscale = T, label = "Overall number of cases  (log scale)") %>%
+          dyEvent("2020-03-05", "The first recovered cases reported", labelLoc = "top") %>%
           dyEvent("2020-03-22", "The first death cases reported", labelLoc = "top") %>%
-          dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 50, max(dats.nod))) 
-        }
+          dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 55, max(dats.nod))) 
+      }
       
       return(p2)
     })
@@ -120,16 +122,37 @@ server <- function(input, output, session) {
     
     mean.recov <- round(mean(na.omit(nodes$Vârsta[!is.na(nodes$Vindecat) & nodes$Vindecat == "Da"])))
     
-    output$hist.recov <- plotly::renderPlotly({
-      fig <- plotly::plot_ly(x = na.omit(nodes$Vârsta[!is.na(nodes$Vindecat) & nodes$Vindecat == "Da"]), type = "histogram",
-                             xbins = list( end = 90, size = 5, start = 1)
-      ) 
-      
-      fig <- fig %>% plotly::layout(xaxis = x, yaxis = y,
-                                    shapes = list(plotly.vline(x = mean.recov, y = 0.95)),
-                                    annotations = plotly.vtext(x = mean.recov, y = 15))
-      fig
+    # output$hist.recov <- plotly::renderPlotly({
+    #   fig <- plotly::plot_ly(x = na.omit(nodes$Vârsta[!is.na(nodes$Vindecat) & nodes$Vindecat == "Da"]), type = "histogram",
+    #                          xbins = list( end = 90, size = 5, start = 1)
+    #   ) 
+    #   
+    #   fig <- fig %>% plotly::layout(xaxis = x, yaxis = y,
+    #                                 shapes = list(plotly.vline(x = mean.recov, y = 0.95)),
+    #                                 annotations = plotly.vtext(x = mean.recov, y = 15))
+    #   fig
+    # })
+    
+    
+    plotly.pie <- daily.cases.cum[nrow(daily.cases.cum),]
+    plotly.pie$Active <- plotly.pie$Total - plotly.pie$Vindecati - plotly.pie$Morti
+    plotly.pie <- as.data.frame(t(cbind(Active = plotly.pie$Active, Recovered = plotly.pie$Vindecati, Deceased = plotly.pie$Morti)))
+    names(plotly.pie) <- "cases"
+    
+    
+    fig.pie <- plotly.pie %>% plot_ly(labels = c("Recovered", "Deceased", "Active"), values = ~cases,
+                                      marker = list(colors = c( "#fc4e2a", "green","#636363"),
+                                                    line = list(color = '#FFFFFF', width = 1))) %>% 
+      add_pie(hole = 0.6) %>% 
+      layout(legend = list(orientation = "h",   # show entries horizontally
+                           xanchor = "center",  # use center of legend as anchor
+                           x = 0.5))  
+    output$pie_breakdown <- plotly::renderPlotly({
+      fig.pie
     })
+    
+    
+    
     
     mean.decs <- round(mean(na.omit(nodes$Vârsta[!is.na(nodes$Vindecat) & nodes$Vindecat == "Nu"])))
     
