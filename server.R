@@ -1,7 +1,7 @@
 #### Server ####
 #source("global.R", local = T)
 server <- function(input, output, session) {
-  shinyjs::addClass(id = "tabs", class = "navbar-middle")
+  # shinyjs::addClass(id = "tabs", class = "navbarpage-right")
   
   source(file = "utils/map.R", local = T)
   
@@ -135,20 +135,22 @@ server <- function(input, output, session) {
     # })
     
     
-    plotly.pie <- daily.cases.cum[nrow(daily.cases.cum),]
-    plotly.pie$Active <- plotly.pie$Total - plotly.pie$Vindecati - plotly.pie$Morti
-    plotly.pie <- as.data.frame(t(cbind(Active = plotly.pie$Active, Recovered = plotly.pie$Vindecati, Deceased = plotly.pie$Morti)))
+    daily.cases.pie <- daily.cases %>% dplyr::mutate(vindecati_daily = Vindecati - dplyr::lag(Vindecati, default = Vindecati[1]) ) %>%
+      dplyr::select("Data","Total", "Vindecati", "Morti", "Terapie intensiva")
+    plotly.pie <- daily.cases.pie[nrow(daily.cases.pie),]
+    plotly.pie$Active <- plotly.pie$Total - plotly.pie$Vindecati - plotly.pie$Morti - plotly.pie$`Terapie intensiva`
+    plotly.pie <- as.data.frame(t(cbind(Active = plotly.pie$Active, Critical = plotly.pie$`Terapie intensiva`, Recovered = plotly.pie$Vindecati, Deceased = plotly.pie$Morti)))
     names(plotly.pie) <- "cases"
     
     
-    fig.pie <- plotly.pie %>% plotly::plot_ly(labels = c(  "Active", "Recovered", "Deceased"), values = ~cases,
-                                      marker = list(colors = c( "#fc4e2a", "green","#636363"),
+    fig.pie <- plotly.pie %>% plotly::plot_ly(labels = c( "Active", "Active Critical","Recovered", "Deceased"), values = ~cases,
+                                      marker = list(colors = c( "#fc4e2a","#e31a1c", "green","#636363"),
                                                     line = list(color = '#FFFFFF', width = 1))) %>% 
       plotly::add_pie(hole = 0.6) %>% 
       plotly::layout(legend = list(orientation = "h",   # show entries horizontally
                            xanchor = "center",  # use center of legend as anchor
                            x = 0.5),
-                     annotations = list(text = paste("Total cases", infect), "showarrow" = F,
+                     annotations = list(text = paste("Total cases", sum(plotly.pie$cases)), "showarrow" = F,
                                         font = list(color = 'red'))
                     )
     output$pie_breakdown <- plotly::renderPlotly({
