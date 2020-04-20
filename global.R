@@ -53,7 +53,6 @@ nodes <- nodes %>% dplyr::filter(!is.na(`Dată diagnostic`))
 # pentru data
 dats.nod <- as.Date(unique(as.character(nodes$`Dată diagnostic`)))
 
-
 # days analysis -----------------------------------------------------------
 
 source(file = "utils/days_analysis.R", local = T)
