@@ -17,7 +17,6 @@ options(gargle_oob_default = TRUE, gargle_oauth_email = "alexandru.dumitrescu@gm
 #relation.cases <- jsonlite::fromJSON("https://covid19.geo-spatial.org/api/statistics/getCaseRelations")
 
 
-
 # latest.cases <- sheets_get("https://docs.google.com/spreadsheets/d/1YxwFui0_HdcCT5ej6TuXACUUk42sButQfC563m0aPlQ/edit?usp=sharing_eil&ts=5e811597")
 # read_sheet("https://docs.google.com/spreadsheets/d/1YxwFui0_HdcCT5ej6TuXACUUk42sButQfC563m0aPlQ/edit?usp=sharing_eil&ts=5e811597")
 #sheeturl <- "https://docs.google.com/spreadsheets/d/1YxwFui0_HdcCT5ej6TuXACUUk42sButQfC563m0aPlQ/edit?usp=sharing_eil&ts=5e811597"
