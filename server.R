@@ -1,6 +1,7 @@
 #### Server ####
 #source("global.R", local = T)
 server <- function(input, output, session) {
+  shinyjs::addClass(id = "tabs", class = "navbar-middle")
   
   source(file = "utils/map.R", local = T)
   
