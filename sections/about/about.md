@@ -26,13 +26,13 @@ Note:
 * Active cases are computed as total confirmed - total recovered - total deaths.
 * Active critical cases are COVID-19 patients needing acute and intensive care in hospitals.
 
-### Source code:  
+### Source code 
 
 Repository: [https://github.com/alexdum](https://github.com/alexdum/covid19-romania)  
 Report issue(s) [here](https://github.com/alexdum/covid19-romania/issues)
 
 
-### Creator:  
+### Developer
 
 Alexandru Dumitrescu <br/>
 Email: [alexandru.dumitrescu@gmail.com](mailto:alexandru.dumitrescu@gmail.com)  
