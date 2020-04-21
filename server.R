@@ -143,7 +143,7 @@ server <- function(input, output, session) {
     names(plotly.pie) <- "cases"
     
     
-    fig.pie <- plotly.pie %>% plotly::plot_ly(labels = c( "Active", "Active Critical","Recovered", "Deceased"), values = ~cases,
+    fig.pie <- plotly.pie %>% plotly::plot_ly(labels = c( "Active", "Active Critical (intensive care)","Recovered", "Deceased"), values = ~cases,
                                       marker = list(colors = c( "#fc4e2a","#e31a1c", "green","#636363"),
                                                     line = list(color = '#FFFFFF', width = 1))) %>% 
       plotly::add_pie(hole = 0.6) %>% 
