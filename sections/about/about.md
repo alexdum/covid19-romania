@@ -19,7 +19,7 @@ The dashboard is structured in two main sections:
 
 ### Data source
 
-The analysis is based on data provided by  [covid19.geo-spatial.org.](https://covid19.geo-spatial.org/despre) .
+The analysis is based on data provided by  [covid19.geo-spatial.org](https://covid19.geo-spatial.org/despre).
 
 Note:
 
@@ -29,7 +29,7 @@ Note:
 ### Source code 
 
 Repository: [https://github.com/alexdum](https://github.com/alexdum/covid19-romania)  
-Report issue(s) [here](https://github.com/alexdum/covid19-romania/issues)
+Report issue(s) or feature(s) request [here](https://github.com/alexdum/covid19-romania/issues)
 
 
 ### Developer
