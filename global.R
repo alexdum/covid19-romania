@@ -1,6 +1,7 @@
 library(shiny)
 library(shinyjs)
 library(shinydashboard)
+library(shinythemes)
 #library(networkD3)
 library(curl)
 library(dygraphs)
