@@ -1,4 +1,4 @@
-## Dashboard to present COVID-19 pandemic pread in Romania.
+## Dashboard to present COVID-19 pandemic spread in Romania.
 
 Built in [R](https://www.r-project.org/) using [Shiny](https://shiny.rstudio.com/), this dashboard aims to provide accurate and relevant facts and statistics about COVID-19 spread in Romania.
 
