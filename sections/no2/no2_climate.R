@@ -20,9 +20,9 @@ map.clim <- leaflet(
   #addProviderTiles(providers$Stamen.Toner, group = "Toner (default)") %>%
   addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite") %>%
   addRasterImage(omi.clim[[1]], colors = color_pal, opacity = .8)  %>%
-  addLayersControl(
-    baseGroups = c("Toner Lite")
-  ) %>%
+  # addLayersControl(
+  #   baseGroups = c("Toner Lite")
+  # ) %>%
   addLegend(pal = color_pal, values = 2:8, position = "bottomright",
             title = "10^15 mol/cm2", opacity = 0.8)
 
