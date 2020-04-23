@@ -31,6 +31,10 @@ no2_ui <- tabPanel("NO2 Analysis", icon = icon("industry"), value = "#maps_no2",
                                                 
                                                 tabPanel("Data",
                                                          includeMarkdown("sections/no2/no2_text.md")
+                                                ),
+                                                
+                                                tabPanel("NO2 2020",
+                                                         h4("TBA")
                                                 )
                                                 
                                     )
