@@ -3,7 +3,7 @@
 server <- function(input, output, session) {
   # shinyjs::addClass(id = "tabs", class = "navbarpage-right")
   
-  source(file = "utils/map.R", local = T)
+  source(file = "sections/maps/map.R", local = T)
   
   observe({
     #url tabs
