@@ -30,7 +30,7 @@ observeEvent(getUrlHash(), {
   # No work to be done if input$tabs and the hash are already the same
   if (hash == input$tabs) return()
   
-  valid <- c("#facts", "#maps", "#about")
+  valid <- c("#facts", "#maps", "#maps_no2", "#about")
   
   if (hash %in% valid) {
     updateTabsetPanel(session, "tabs", hash)

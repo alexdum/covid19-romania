@@ -1,8 +1,8 @@
 #### UI ####
 source("sections/ui_about.R", local = T)
-#source("sections/ui_spread.R", local = T)
 source("sections/ui_facts.R", local = T)
 source("sections/ui_maps.R", local = T)
+source("sections/ui_no2.R", local = T)
 #source("sections/general_statistics.R")
 
 # meta tags https://rdrr.io/github/daattali/shinyalert/src/inst/examples/demo/ui.R
@@ -30,8 +30,8 @@ ui <- shinyUI(
                          # maps ------------------------------------------------------
                          maps_ui,
                          
-                         # Spread network ----------------------------------------------------------
-                         # spread_ui,
+                         #  NO2 Analysis----------------------------------------------------------
+                         no2_ui,
                          
                          # About -------------------------------------------------------------------
                          about_ui
