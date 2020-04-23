@@ -12,20 +12,19 @@ color_pal <- colorNumeric(c('#fff7f3','#fde0dd','#fcc5c0','#fa9fb5','#f768a1','#
                           na.color = "transparent")
 
 map.clim <- leaflet( 
-  options = leafletOptions(minZoom = 6, maxZoom = 18)) %>%
-  setView(25, 46, zoom = 6) %>%
-  setMaxBounds(20, 43.5, 30, 48.2) %>%
+  options = leafletOptions(minZoom = 5, maxZoom = 18)) %>%
+  setView(26, 46, zoom = 6) %>%
+  setMaxBounds(18.5, 41.5, 31, 51) %>%
 
   #ddTiles(group = "OSM ") %>%
   #addProviderTiles(providers$Stamen.Toner, group = "Toner (default)") %>%
   addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite") %>%
-  addRasterImage(omi.clim[[1]], colors = color_pal, opacity = .8)  %>%
+  addRasterImage(omi.clim[[1]], colors = color_pal, opacity = .8)  #%>%
   # addLayersControl(
   #   baseGroups = c("Toner Lite")
   # ) %>%
-  addLegend(pal = color_pal, values = 2:8, position = "bottomright",
-            title = "10^15 mol/cm2", opacity = 0.8, 
-            labFormat = labelFormat(transform = function(x) sort(x, decreasing = TRUE)))
+  # addLegend(pal = color_pal, values = 2:8, position = "topright",
+  #           title = "mol./cm2", opacity = 0.8)
 
 output$no2map_clim = renderLeaflet({
   map.clim})
