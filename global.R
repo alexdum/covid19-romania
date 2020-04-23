@@ -7,6 +7,7 @@ library(curl)
 library(dygraphs)
 library(leaflet)
 library(googlesheets4)
+library(ncdf4)
 options(gargle_oob_default = TRUE, gargle_oauth_email = "alexandru.dumitrescu@gmail.com",
         gargle_oauth_cache = ".secrets")
 # https://www.r-bloggers.com/visualizing-geo-spatial-data-with-sf-and-plotly/
