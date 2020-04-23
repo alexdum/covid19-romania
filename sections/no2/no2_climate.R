@@ -24,7 +24,8 @@ map.clim <- leaflet(
   #   baseGroups = c("Toner Lite")
   # ) %>%
   addLegend(pal = color_pal, values = 2:8, position = "bottomright",
-            title = "10^15 mol/cm2", opacity = 0.8)
+            title = "10^15 mol/cm2", opacity = 0.8, 
+            labFormat = labelFormat(transform = function(x) sort(x, decreasing = TRUE)))
 
 output$no2map_clim = renderLeaflet({
   map.clim})
