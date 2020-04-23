@@ -32,11 +32,12 @@ map <-  leaflet(
   
   
   addEasyButton(easyButton(
-    icon    = "glyphicon glyphicon-globe", title = "Reset zoom",
-    onClick = JS("function(btn, map){ map.setView([46, 25], 6); }"))) %>%
-  addEasyButton(easyButton(
-    icon    = htmltools::span(class = "star", htmltools::HTML("&target;")),title = "Locate Me",
-    onClick = JS("function(btn, map){ map.locate({setView: true, maxZoom: 6}); }"))) 
+    icon    = "glyphicon glyphicon-home", title = "Reset zoom",
+    onClick = JS("function(btn, map){ map.setView([46, 25], 6); }"))) 
+# %>%
+#   addEasyButton(easyButton(
+#     icon    = htmltools::span(class = "star", htmltools::HTML("&target;")),title = "Locate Me",
+#     onClick = JS("function(btn, map){ map.locate({setView: true, maxZoom: 6}); }"))) 
 
 observe({
   req(input$timeSlider, input$overview_map_zoom)
@@ -107,11 +108,12 @@ map2 <-  leaflet(
   
   
   addEasyButton(easyButton(
-    icon    = "glyphicon glyphicon-globe", title = "Reset zoom",
-    onClick = JS("function(btn, map){ map.setView([46, 25], 6); }"))) %>%
-  addEasyButton(easyButton(
-    icon    = htmltools::span(class = "star", htmltools::HTML("&target;")),title = "Locate Me",
-    onClick = JS("function(btn, map){ map.locate({setView: true, maxZoom: 6}); }"))) 
+    icon    = "glyphicon glyphicon-home", title = "Reset zoom",
+    onClick = JS("function(btn, map){ map.setView([46, 25], 6); }"))) 
+# %>%
+#   addEasyButton(easyButton(
+#     icon    = htmltools::span(class = "star", htmltools::HTML("&target;")),title = "Locate Me",
+#     onClick = JS("function(btn, map){ map.locate({setView: true, maxZoom: 6}); }"))) 
 
 observe({
   req(input$timeSlider2, input$overview_map2_zoom)
