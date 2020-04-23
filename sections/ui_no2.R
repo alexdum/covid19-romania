@@ -1,4 +1,4 @@
-no2_ui <- tabPanel("NO2 Analysis", icon = icon("industry"), value = "#maps_no2",
+no2_ui <- tabPanel("NO₂", icon = icon("industry"), value = "#maps_no2",
                     sidebarLayout(fluid = T,
                                   
                                   sidebarPanel(width = 2,
@@ -10,9 +10,9 @@ no2_ui <- tabPanel("NO2 Analysis", icon = icon("industry"), value = "#maps_no2",
                                   ),
                                   mainPanel(
                                     tabsetPanel(id = "maps_no2clim",
-                                                tabPanel("NO2 Climatology",
+                                                tabPanel("NO₂ Climatology",
                                                          fluidRow(
-                                                           h3("Satellite Observed Tropospheric NO2 Concentration - montlhy multiannual means 2010 - 2019"),
+                                                           h3("Satellite Observed Tropospheric NO₂ Concentration - montlhy multiannual means 2010 - 2019"),
                                                            leafletOutput("no2map_clim"),
                                                            sliderInput("integer.month", "Months",
                                                                         min        = 1,
@@ -33,7 +33,7 @@ no2_ui <- tabPanel("NO2 Analysis", icon = icon("industry"), value = "#maps_no2",
                                                          includeMarkdown("sections/no2/no2_text.md")
                                                 ),
                                                 
-                                                tabPanel("NO2 2020",
+                                                tabPanel("NO₂ 2020",
                                                          h4("TBA")
                                                 )
                                                 
