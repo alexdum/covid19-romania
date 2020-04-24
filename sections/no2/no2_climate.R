@@ -13,13 +13,15 @@ color_pal <- colorNumeric(c('#fff7f3','#fde0dd','#fcc5c0','#fa9fb5','#f768a1','#
 
 map.clim <- leaflet( 
   options = leafletOptions(minZoom = 5, maxZoom = 18)) %>%
-  setView(26, 46, zoom = 6) %>%
+  setView(25, 46, zoom = 6) %>%
   setMaxBounds(18.5, 41.5, 31, 51) %>%
-
+  
   #ddTiles(group = "OSM ") %>%
   #addProviderTiles(providers$Stamen.Toner, group = "Toner (default)") %>%
   addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite") %>%
-  addRasterImage(omi.clim[[1]], colors = color_pal, opacity = .8)  #%>%
+  addRasterImage(omi.clim[[1]], colors = color_pal, opacity = .8)  %>%
+  addProviderTiles(providers$Stamen.TonerLabels)
+  #%>%
   # addLayersControl(
   #   baseGroups = c("Toner Lite")
   # ) %>%
@@ -28,13 +30,14 @@ map.clim <- leaflet(
 
 output$no2map_clim = renderLeaflet({
   map.clim})
-reactiveRaster <- reactive({omi.clim[[input$integer.month]]})
+reactiveRaster <- reactive({omi.clim[[which(month.abb %in% input$no2.month)]]})
 observe({
-  req(input$integer.month)
+  req(input$no2.month)
   
   leafletProxy("no2map_clim") %>%
     clearImages() %>%
-    addRasterImage(reactiveRaster(), colors = color_pal, opacity = .8)
+    addRasterImage(reactiveRaster(), colors = color_pal, opacity = .8) %>%
+    addProviderTiles(providers$Stamen.TonerLabels)
 })
 
 
