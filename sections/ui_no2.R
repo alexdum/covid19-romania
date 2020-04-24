@@ -14,18 +14,16 @@ no2_ui <- tabPanel("NO₂", icon = icon("industry"), value = "#maps_no2",
                                                         fluidRow(
                                                           h3("Satellite Observed Tropospheric NO₂ Concentration - montlhy multiannual means 2010 - 2019"),
                                                           leafletOutput("no2map_clim"),
-                                                          HTML('<center>10^5 molec/cm^2</center>'),
+                                                          HTML('<center>10<sup>15</sup>molec/cm<sup>2</sup></center>'),
                                                           HTML('<center><img src="no2_legend.png" height=42 width="150"></center>'),
-                                                          sliderInput("integer.month", "Months",
-                                                                      min        = 1,
-                                                                      max        = 12,
-                                                                      value      = 1,
-                                                                      step =     1,
-                                                                      width      = "100%",
-                                                                      ticks = T, animate = T),
-                                                          class = "slider",
-                                                          width = 12,
-                                                          style = 'padding-left:40px; padding-right:40px;',
+                                                          sliderTextInput(
+                                                            inputId = "no2.month", 
+                                                            label = p(tags$b("Select month")), 
+                                                            choices = month.abb, selected = month.abb[1], 
+                                                            grid = TRUE,
+                                                            width = "100%",
+                                                            animate = T
+                                                          ),
                                                           helpText("Press the play button for animation.", 
                                                                    style = "text-align:right;")
                                                         )
