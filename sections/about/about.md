@@ -12,6 +12,7 @@ The dashboard is structured in two main sections:
 
 * Visualisation: [shiny](https://shiny.rstudio.com/)
 * Map: [leaflet](https://rstudio.github.io/leaflet/) 
+* NetCDF manipulating: [ncdf4](https://cran.r-project.org/web/packages/ncdf4/index.html)
 * Chart: [dygraphs](https://rstudio.github.io/dygraphs/); [plotly](https://plot.ly/r/)
 * Table: [DT](https://rstudio.github.io/DT/)
 * Deployment: [shinyapps.io](https://www.shinyapps.io/)
@@ -19,12 +20,20 @@ The dashboard is structured in two main sections:
 
 ### Data source
 
-The analysis is based on data provided by  [covid19.geo-spatial.org](https://covid19.geo-spatial.org/despre).
+1. Romania COVID-19 data provided by [covid19.geo-spatial.org](https://covid19.geo-spatial.org/despre).
 
-Note:
-
-* Active cases are computed as total confirmed - total recovered - total deaths.
+<em>
+Note: <br>
+* Active cases are computed as total confirmed - total recovered - total deaths.<br>
 * Active critical cases are COVID-19 patients needing acute and intensive care in hospitals.
+</em>
+
+2. $NO_2$ Concentration data extracted from the Level 3 gridded product [OMNO2d.003](https://disc.gsfc.nasa.gov/datasets/OMNO2d_003/summary), obtianed from the Ozone Monitoring Instrument (OMI) installed on NASA’s Aura scientific research satellite.
+
+<em>
+Note: <br>
+* The variable extracted is Tropospheric Cloud Screened $NO_2$.
+</em>
 
 ### Source code 
 
