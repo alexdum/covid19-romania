@@ -23,16 +23,16 @@ The dashboard is structured in two main sections:
 1. Romania COVID-19 data provided by [covid19.geo-spatial.org](https://covid19.geo-spatial.org/despre).
 
 <em>
-Note: <br>
+
 * Active cases are computed as total confirmed - total recovered - total deaths.<br>
 * Active critical cases are COVID-19 patients needing acute and intensive care in hospitals.
 </em>
 
-2. $NO_2$ Concentration data extracted from the Level 3 gridded product [OMNO2d.003](https://disc.gsfc.nasa.gov/datasets/OMNO2d_003/summary), obtianed from the Ozone Monitoring Instrument (OMI) installed on NASA’s Aura scientific research satellite.
+2. NO<sub>2</sub> concentration data extracted from the Level 3 gridded product [OMNO2d.003](https://disc.gsfc.nasa.gov/datasets/OMNO2d_003/summary), obtianed from the Ozone Monitoring Instrument (OMI) installed on NASA’s Aura scientific research satellite.
 
 <em>
-Note: <br>
-* The variable extracted is Tropospheric Cloud Screened $NO_2$.
+
+* The variable extracted is Tropospheric Cloud Screened NO<sub>2</sub>.
 </em>
 
 ### Source code 
