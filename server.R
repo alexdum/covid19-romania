@@ -114,7 +114,9 @@ server <- function(input, output, session) {
     output$hist <- plotly::renderPlotly({
       fig <- plotly::plot_ly(x = na.omit(nodes$Vârsta), type = "histogram",
                              xbins = list(end = 90, size = 5, start = 1),
-                             nbinsx = 10
+                             nbinsx = 10,
+                             marker = list(colors = c( "#fc4e2a","#e31a1c", "green","#636363"),
+                                           line = list(color = '#FFFFFF', width = 1))
       )
       
       fig <- fig %>% plotly::layout(xaxis = x, yaxis = y,
@@ -137,7 +139,7 @@ server <- function(input, output, session) {
     # })
     
     
-  c <- daily.cases %>% dplyr::mutate(vindecati_daily = Vindecati - dplyr::lag(Vindecati, default = Vindecati[1]) ) %>%
+    daily.cases.pie <- daily.cases %>% dplyr::mutate(vindecati_daily = Vindecati - dplyr::lag(Vindecati, default = Vindecati[1]) ) %>%
       dplyr::select("Data","Total", "Vindecati", "Morti", "Terapie intensiva") %>%
       dplyr::filter_all(dplyr::all_vars(!is.na(.)))
     
@@ -168,7 +170,9 @@ server <- function(input, output, session) {
     
     output$hist.decs <- plotly::renderPlotly({
       fig <- plotly::plot_ly(x = na.omit(nodes$Vârsta[!is.na(nodes$Vindecat) & nodes$Vindecat == "Nu"]), type = "histogram",
-                             xbins = list( end = 90,   size = 5, start = 1))
+                             xbins = list( end = 90,   size = 5, start = 1),
+                             marker = list(colors = c( "#fc4e2a","#e31a1c", "green","#636363"),
+                                           line = list(color = '#FFFFFF', width = 1)))
       fig <- fig %>% plotly::layout(xaxis = x, yaxis = y,
                                     shapes = list(plotly.vline(x = mean.decs, y = 0.95)),
                                     annotations = plotly.vtext(x = mean.decs, y = 30))
@@ -178,7 +182,9 @@ server <- function(input, output, session) {
     output$hist2 <- plotly::renderPlotly({
       # country of infection
       fig2 <- plotly::plot_ly(countr.inf[countr.inf$Country != "România",], x = ~Country, 
-                              y = ~Counts, type = 'bar') %>%
+                              y = ~Counts, type = 'bar',
+                              marker = list(colors = c( "#fc4e2a","#e31a1c", "green","#636363"),
+                                            line = list(color = '#FFFFFF', width = 1))) %>%
         plotly::layout(
           xaxis = list(title = "", tickangle = 30,
                        categoryorder = "total descending"),
