@@ -8,7 +8,7 @@ library(dygraphs)
 library(leaflet)
 library(googlesheets4)
 library(ncdf4)
-library(rgdal)
+library(rgdal,quietly = T)
 library(shinyWidgets)
 options(gargle_oob_default = TRUE, gargle_oauth_email = "alexandru.dumitrescu@gmail.com",
         gargle_oauth_cache = ".secrets")
