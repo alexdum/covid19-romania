@@ -3,7 +3,7 @@
 daily.cases <- readRDS("data/daily.cases.rds")
 
 daily.latest <- read_sheet("1YxwFui0_HdcCT5ej6TuXACUUk42sButQfC563m0aPlQ",
-                          sheet =  "Cazuri noi pe zile")
+                           sheet =  "Cazuri noi pe zile")
 
 # conditii care trebuie indeplinite pentru a scrie fisierul
 if (daily.latest$Morti[sum(!is.na(daily.latest$Morti))] != daily.cases$Morti[sum(!is.na(daily.cases$Morti))]  |
@@ -14,11 +14,14 @@ if (daily.latest$Morti[sum(!is.na(daily.latest$Morti))] != daily.cases$Morti[sum
   daily.cases <- daily.latest
 } 
 
+daily.cases <- daily.cases %>% dplyr::filter(!is.na(Data))
 
 daily.cases.days <- daily.cases %>% dplyr::mutate(vindecati_daily = Vindecati - dplyr::lag(Vindecati, default = Vindecati[1]) ) %>%
-              dplyr::select("Data","Cazuri", "vindecati_daily", "Morti pe zi")
+                  dplyr::select("Data","Cazuri", "vindecati_daily", "Morti pe zi") %>%
+                dplyr::filter_all(dplyr::all_vars(!is.na(.))) # elimina randurile cu NA
 
 
 daily.cases.cum <- daily.cases %>% dplyr::mutate(vindecati_daily = Vindecati - dplyr::lag(Vindecati, default = Vindecati[1]) ) %>%
-  dplyr::select("Data","Total", "Vindecati", "Morti")
+  dplyr::select("Data","Total", "Vindecati", "Morti") %>%
+  dplyr::filter_all(dplyr::all_vars(!is.na(.))) # elimina randurile cu NA
 
