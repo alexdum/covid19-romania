@@ -32,7 +32,9 @@ options(gargle_oob_default = TRUE, gargle_oauth_email = "alexandru.dumitrescu@gm
 # this file has the same structure as the JSON from Google
 # sheets_auth(scopes = "https://www.googleapis.com/auth/spreadsheets.readonly")
 
+try(silent = T,
 latest.cases <- read_sheet("1YxwFui0_HdcCT5ej6TuXACUUk42sButQfC563m0aPlQ")
+)
 
 names(latest.cases)[1]  <-  "ID"
 
