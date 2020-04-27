@@ -103,11 +103,13 @@ server <- function(input, output, session) {
     
     x <- list(
       title = "Ages bins (five years intervals)",
-      titlefont = f
+      titlefont = f,
+      fixedrange = TRUE
     )
     y <- list(
       title = "Counts",
-      titlefont = f
+      titlefont = f,
+      fixedrange = TRUE
     )
     
     mean.cont <-  round(mean(na.omit(nodes$Vârsta)))
@@ -121,7 +123,11 @@ server <- function(input, output, session) {
       
       fig <- fig %>% plotly::layout(xaxis = x, yaxis = y,
                                     shapes = list(plotly.vline(x = mean.cont, y = 0.95)),
-                                    annotations = plotly.vtext(x = mean.cont, y = 30))
+                                    annotations = plotly.vtext(x = mean.cont, y = 30)) %>%
+        plotly::config(displaylogo = FALSE,
+        modeBarButtonsToRemove = c("zoomIn2d", "zoomOut2d", "lasso2d","handleCartesian",
+                                   "select2d", "autoScale2d", "resetScale2d", "hoverClosestCartesian"))
+      
       fig
     })
     
@@ -175,7 +181,11 @@ server <- function(input, output, session) {
                                            line = list(color = '#FFFFFF', width = 1)))
       fig <- fig %>% plotly::layout(xaxis = x, yaxis = y,
                                     shapes = list(plotly.vline(x = mean.decs, y = 0.95)),
-                                    annotations = plotly.vtext(x = mean.decs, y = 30))
+                                    annotations = plotly.vtext(x = mean.decs, y = 30)) %>%
+        plotly::config(displaylogo = FALSE,
+                       modeBarButtonsToRemove = c("zoomIn2d", "zoomOut2d", "lasso2d","handleCartesian",
+                                                  "select2d", "autoScale2d", "resetScale2d", "hoverClosestCartesian"))
+      
       fig
     })
     
@@ -187,9 +197,14 @@ server <- function(input, output, session) {
                                             line = list(color = '#FFFFFF', width = 1))) %>%
         plotly::layout(
           xaxis = list(title = "", tickangle = 30,
-                       categoryorder = "total descending"),
-          yaxis = list(title = "Counts")
-        )
+                       categoryorder = "total descending",
+                       fixedrange = TRUE),
+          yaxis = list(title = "Counts", fixedrange = TRUE)) %>%
+        plotly::config(displaylogo = FALSE,
+                       modeBarButtonsToRemove = c("zoomIn2d", "zoomOut2d", "lasso2d","handleCartesian",
+                                                  "select2d", "autoScale2d", "resetScale2d", "hoverClosestCartesian"))
+      
+        
       
       fig2 
     })
