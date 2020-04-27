@@ -25,10 +25,10 @@ map <-  leaflet(
   addTiles() %>%
   addProviderTiles(providers$CartoDB.Positron, group = "Light") %>%
   addProviderTiles(providers$HERE.satelliteDay, group = "Satellite") %>%
-  addLayersControl(
-    baseGroups    = c("Light", "Satellite"),
-    #overlayGroups = c("Cases", "Deceased")
-  ) %>% #hideGroup("Deceased") %>%
+  # addLayersControl(
+  #   baseGroups    = c("Light", "Satellite"),
+  #   #overlayGroups = c("Cases", "Deceased")
+  # ) %>% #hideGroup("Deceased") %>%
   
   
   addEasyButton(easyButton(
@@ -101,10 +101,10 @@ map2 <-  leaflet(
   addTiles() %>%
   addProviderTiles(providers$CartoDB.Positron, group = "Light") %>%
   addProviderTiles(providers$HERE.satelliteDay, group = "Satellite") %>%
-  addLayersControl(
-    baseGroups    = c("Light", "Satellite"),
-    #overlayGroups = c("Cases", "Deceased")
-  ) %>% #hideGroup("Deceased") %>%
+  # addLayersControl(
+  #   baseGroups    = c("Light", "Satellite"),
+  #   #overlayGroups = c("Cases", "Deceased")
+  # ) %>% #hideGroup("Deceased") %>%
   
   
   addEasyButton(easyButton(

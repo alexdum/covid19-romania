@@ -20,7 +20,10 @@ map.clim <- leaflet(
   #addProviderTiles(providers$Stamen.Toner, group = "Toner (default)") %>%
   addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite") %>%
   addRasterImage(omi.clim[[1]], colors = color_pal, opacity = .8)  %>%
-  addProviderTiles(providers$Stamen.TonerLabels)
+  addProviderTiles(providers$Stamen.TonerLabels) %>%
+  addEasyButton(easyButton(
+    icon    = "glyphicon glyphicon-home", title = "Reset zoom",
+    onClick = JS("function(btn, map){ map.setView([46, 25], 6); }"))) 
   #%>%
   # addLayersControl(
   #   baseGroups = c("Toner Lite")
