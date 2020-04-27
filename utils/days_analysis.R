@@ -2,8 +2,10 @@
 
 daily.cases <- readRDS("data/daily.cases.rds")
 
-daily.latest <- read_sheet("1YxwFui0_HdcCT5ej6TuXACUUk42sButQfC563m0aPlQ",
+try(silent = T,
+  daily.latest <- read_sheet("1YxwFui0_HdcCT5ej6TuXACUUk42sButQfC563m0aPlQ",
                            sheet =  "Cazuri noi pe zile")
+  )
 
 # conditii care trebuie indeplinite pentru a scrie fisierul
 if (daily.latest$Morti[sum(!is.na(daily.latest$Morti))] != daily.cases$Morti[sum(!is.na(daily.cases$Morti))]  |
