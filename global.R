@@ -71,7 +71,7 @@ source(file = "utils/days_analysis.R", local = T)
 infect <- length(nodes$`Dată diagnostic`)
 recov <- daily.cases$Vindecati[daily.cases$Data == max(daily.cases$Data)]
 updd <- dats.nod[length(dats.nod)]
-decs <-  length(na.omit(nodes$`Dată deces`))
+decs <-  daily.cases$Morti[daily.cases$Data == max(daily.cases$Data)]
 
 # time series plots
 cases.day <- aggregate(ID~`Dată diagnostic`,FUN = length, data = nodes)
