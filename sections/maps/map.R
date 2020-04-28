@@ -22,9 +22,9 @@ map <-  leaflet(
                 options = leafletOptions(minZoom = 6, maxZoom = 18)) %>%
   setView(25, 46, zoom = 6) %>%
   setMaxBounds(20, 43.5, 30, 48.2) %>%
-  addTiles() %>%
+  #addTiles() %>%
   addProviderTiles(providers$CartoDB.Positron, group = "Light") %>%
-  addProviderTiles(providers$HERE.satelliteDay, group = "Satellite") %>%
+  #addProviderTiles(providers$HERE.satelliteDay, group = "Satellite") %>%
   # addLayersControl(
   #   baseGroups    = c("Light", "Satellite"),
   #   #overlayGroups = c("Cases", "Deceased")
@@ -98,9 +98,9 @@ map2 <-  leaflet(
                  options = leafletOptions(minZoom = 6, maxZoom = 18) ) %>%
   setView(25, 46, zoom = 6) %>%
   setMaxBounds(20, 43.5, 30, 48.2) %>%
-  addTiles() %>%
+  # addTiles() %>%
   addProviderTiles(providers$CartoDB.Positron, group = "Light") %>%
-  addProviderTiles(providers$HERE.satelliteDay, group = "Satellite") %>%
+  # addProviderTiles(providers$HERE.satelliteDay, group = "Satellite") %>%
   # addLayersControl(
   #   baseGroups    = c("Light", "Satellite"),
   #   #overlayGroups = c("Cases", "Deceased")
