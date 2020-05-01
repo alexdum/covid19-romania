@@ -61,7 +61,7 @@ server <- function(input, output, session) {
         dySeries("Morti pe zi", label = "Deaths", color  = "#636363", stepPlot   = T, strokeWidth = 2) %>%
         dyOptions(stackedGraph = T) %>%
         dyLegend(show = "follow") %>%
-        dyRangeSelector(height = 40, dateWindow = c(max(as.Date(daily.cases.days$Data)) - 60, as.Date(max(daily.cases.days$Data))))
+        dyRangeSelector(height = 40, dateWindow = c(max(as.Date(daily.cases.days$Data)) - 70, as.Date(max(daily.cases.days$Data))))
       
     })
     
@@ -76,7 +76,7 @@ server <- function(input, output, session) {
         dyEvent("2020-03-05", "The first recovered cases reported", labelLoc = "top") %>%
         dyEvent("2020-03-22", "The first death cases reported", labelLoc = "top") %>%
         dyOptions(stackedGraph = T, mobileDisableYTouch  = T) %>%
-        dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 60, max(dats.nod)))
+        dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 70, max(dats.nod)))
       
       if (input$checkbox_logCaseEvolution) {
         p2 <- p %>% dySeries("Total", label = "Cases", color = "red", fillGraph = T,  strokeWidth = 2) %>%
@@ -89,7 +89,7 @@ server <- function(input, output, session) {
           dyAxis("y", drawGrid = T, logscale = T, label = "Overall number of cases  (log scale)") %>%
           dyEvent("2020-03-05", "The first recovered cases reported", labelLoc = "top") %>%
           dyEvent("2020-03-22", "The first death cases reported", labelLoc = "top") %>%
-          dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 60, max(dats.nod))) 
+          dyRangeSelector(height = 40, dateWindow = c(max(dats.nod) - 70, max(dats.nod))) 
       }
       
       return(p2)
