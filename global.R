@@ -1,15 +1,17 @@
-library(shiny)
-library(shinyjs)
-library(shinydashboard)
-library(shinythemes)
-#library(networkD3)
-library(curl)
-library(dygraphs)
-library(leaflet)
-library(googlesheets4)
-library(ncdf4)
-library(rgdal,quietly = T)
-library(shinyWidgets)
+suppressPackageStartupMessages({
+  library(shiny)
+  library(shinyjs)
+  library(shinydashboard)
+  library(shinythemes)
+  #library(networkD3)
+  library(curl)
+  library(dygraphs)
+  library(leaflet)
+  library(googlesheets4)
+  library(ncdf4)
+  library(rgdal, quietly = T)
+  library(shinyWidgets)
+})
 options(gargle_oob_default = TRUE, gargle_oauth_email = "alexandru.dumitrescu@gmail.com",
         gargle_oauth_cache = ".secrets")
 # https://www.r-bloggers.com/visualizing-geo-spatial-data-with-sf-and-plotly/
@@ -17,7 +19,7 @@ options(gargle_oob_default = TRUE, gargle_oauth_email = "alexandru.dumitrescu@gm
 # https://towardsdatascience.com/create-a-coronavirus-app-using-r-shiny-and-plotly-6a6abf66091d
 # https://github.com/eparker12/nCoV_tracker
 # https://deanattali.com/
-  # https://www.rivm.nl/en/novel-coronavirus-covid-19/current-information-about-novel-coronavirus-covid-19
+# https://www.rivm.nl/en/novel-coronavirus-covid-19/current-information-about-novel-coronavirus-covid-19
 #relation.cases <- jsonlite::fromJSON("https://covid19.geo-spatial.org/api/statistics/getCaseRelations")
 # url <-  jsonlite::fromJSON("https://services.arcgis.com/IjJbzDQF4hOiNl87/ArcGIS/rest/services/COVID_19_tabel_view/FeatureServer/0/query?where=1%3D1&objectIds=&time=&resultType=none&outFields=*&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&sqlFormat=none&f=pjson&token=")
 
@@ -33,7 +35,7 @@ options(gargle_oob_default = TRUE, gargle_oauth_email = "alexandru.dumitrescu@gm
 # sheets_auth(scopes = "https://www.googleapis.com/auth/spreadsheets.readonly")
 
 try(silent = T,
-latest.cases <- read_sheet("1YxwFui0_HdcCT5ej6TuXACUUk42sButQfC563m0aPlQ")
+    latest.cases <- read_sheet("1YxwFui0_HdcCT5ej6TuXACUUk42sButQfC563m0aPlQ")
 )
 
 names(latest.cases)[1]  <-  "ID"
