@@ -14,8 +14,8 @@ no2_ui <- tabPanel("NO₂", icon = icon("industry"), value = "#maps_no2",
                                                         fluidRow(
                                                           h3("Satellite Observed Tropospheric NO₂ Concentration - montlhy multiannual means 2010 - 2019"),
                                                           leafletOutput("no2map_clim"),
-                                                          HTML('<strong style="font-size:12px"><center>10<sup>15</sup>moleccules/cm<sup>2</sup></center></strong>'),
-                                                          HTML('<center><img src="no2_legend_clim.png" height=42 width="150"></center>'),
+                                                          HTML('<strong style="font-size:12px"><center>10<sup>15</sup>molecules/cm<sup>2</sup></center></strong>'),
+                                                          HTML('<center><img src="no2_legend_clim.png" height=35 width="127"></center>'),
                                                           sliderTextInput(
                                                             inputId = "no2.month", 
                                                             label = p(tags$b("Select month")), 
