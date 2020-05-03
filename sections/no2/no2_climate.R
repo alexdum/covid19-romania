@@ -26,12 +26,12 @@ map.clim <- leaflet(
     icon    = "glyphicon glyphicon-home", title = "Reset zoom",
     onClick = JS("function(btn, map){ map.setView([46, 25], 6); }")))
 #%>%
-  # addLayersControl(
-  #   baseGroups = c("Toner Lite")
-  # ) 
+# addLayersControl(
+#   baseGroups = c("Toner Lite")
+# ) 
 
-  # addLegend(pal = color_pal, values = 2:8, position = "topright",
-  #           title = "mol./cm2", opacity = 0.8)
+# addLegend(pal = color_pal, values = 2:8, position = "topright",
+#           title = "mol./cm2", opacity = 0.8)
 
 output$no2map_clim = renderLeaflet({
   map.clim})
