@@ -129,3 +129,13 @@ names(countr.infection) <- c("Country", "Counts")
 
 countr.inf <- countr.infection %>% dplyr::filter(!Country %in% c("Romania", "Unknown")) %>%
   dplyr::arrange(desc(Counts))
+
+
+# map no2 actual ----------------------------------------------------------
+
+omi.act <- raster::stack("data/OMI-Aura/OMI-Aura_L3-OMNO2d_monthly.nc")
+omi.act <- omi.act/10^15  
+dats.act <- as.Date(names(omi.act), "X%Y.%m.%d")
+
+omi.act[omi.act > 8] <- 8
+omi.act[omi.act < 2] <- 2
