@@ -1,6 +1,6 @@
 
 # download and load data
-omi.clim <- raster::stack("data/OMI-Aura/OMI-Aura_L3-OMNO2d_ymonmean_2015_2019.nc4")
+omi.clim <- raster::stack("www/data/OMI-Aura/OMI-Aura_L3-OMNO2d_ymonmean_2015_2019.nc4")
 omi.clim <- omi.clim/10^15  
 
 omi.clim[omi.clim > 8] <- 8
@@ -46,6 +46,5 @@ observe({
     addProviderTiles(providers$Stamen.TonerLabels) %>%
     addProviderTiles(providers$OpenMapSurfer.AdminBounds) 
 })
-
 
 

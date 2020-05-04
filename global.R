@@ -41,14 +41,14 @@ try(silent = T,
 
 names(latest.cases)[1]  <-  "ID"
 
-relation.cases <- readRDS("data/relation.cases.rds")
+relation.cases <- readRDS("www/data/relation.cases.rds")
 
 # conditii care trebuie indeplinite pentru a scrie fisierul
 if (sum(!is.na(latest.cases$`Dată diagnostic`)) > sum(!is.na(relation.cases$`Dată diagnostic`)) |
     sum(latest.cases$Vindecat[!is.na(latest.cases$Vindecat)] == "Da") > sum(relation.cases$Vindecat[!is.na(relation.cases$Vindecat)] == "Da") |
     sum(!is.na(latest.cases$`Dată deces`)) > sum(!is.na(relation.cases$`Dată deces`))) {
   
-  saveRDS(latest.cases, "data/relation.cases.rds")
+  saveRDS(latest.cases, "www/data/relation.cases.rds")
   relation.cases <- latest.cases
 } 
 
@@ -133,7 +133,7 @@ countr.inf <- countr.infection %>% dplyr::filter(!Country %in% c("Romania", "Unk
 
 # map no2 actual ----------------------------------------------------------
 
-omi.act <- raster::stack("data/OMI-Aura/OMI-Aura_L3-OMNO2d_monthly.nc")
+omi.act <- raster::stack("www/data/OMI-Aura/OMI-Aura_L3-OMNO2d_monthly.nc")
 omi.act <- omi.act/10^15  
 dats.act <- as.Date(names(omi.act), "X%Y.%m.%d")
 

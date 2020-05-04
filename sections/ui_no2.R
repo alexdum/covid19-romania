@@ -51,6 +51,8 @@ no2_ui <- tabPanel("NO₂", icon = icon("industry"), value = "#maps_no2",
                                                
                                                tabPanel("Data",
                                                         includeMarkdown("sections/no2/no2_text.md")
+                                                       
+                                                        
                                                )
                                                
                                    )

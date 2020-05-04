@@ -1,4 +1,4 @@
-counties <- read.csv("data/counties_centroids.csv", stringsAsFactors = F)
+counties <- read.csv("www/data/counties_centroids.csv", stringsAsFactors = F)
 names(counties)[c(3,16,17)] <- c("county", "longitude", "latitude")
 counties <- counties %>% dplyr::select(c("county", "longitude", "latitude")) 
 

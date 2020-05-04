@@ -1,6 +1,6 @@
 
 
-daily.cases <- readRDS("data/daily.cases.rds")
+daily.cases <- readRDS("www/data/daily.cases.rds")
 
 try(silent = T,
   daily.latest <- read_sheet("1YxwFui0_HdcCT5ej6TuXACUUk42sButQfC563m0aPlQ",
@@ -12,7 +12,7 @@ if (daily.latest$Morti[sum(!is.na(daily.latest$Morti))] != daily.cases$Morti[sum
     daily.latest$Vindecati[sum(!is.na(daily.latest$Vindecati))] != daily.cases$Vindecati[sum(!is.na(daily.cases$Vindecati))] |
     daily.latest$Cazuri[sum(!is.na(daily.latest$Cazuri))] != daily.cases$Cazuri[sum(!is.na(daily.cases$Cazuri))] ) {
   
-  saveRDS(daily.latest, "data/daily.cases.rds")
+  saveRDS(daily.latest, "www/data/daily.cases.rds")
   daily.cases <- daily.latest
 } 
 
