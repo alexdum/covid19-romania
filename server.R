@@ -5,7 +5,9 @@ server <- function(input, output, session) {
   
   source(file = "sections/maps/map.R", local = T)
   # no 2 maps
+  source(file = "sections/no2/no2_actual.R", local = T)
   source(file = "sections/no2/no2_climate.R", local = T)
+ 
   
   observe({
     #url tabs
