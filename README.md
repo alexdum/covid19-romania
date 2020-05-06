@@ -1,4 +1,4 @@
-[![Github All Releases](https://img.shields.io/github/alexdum/covid19-romania/total.svg)]()
+[![Github All Releases](https://img.shields.io/github/downloads/alexdum/covid19-romania/total)]()
 
 # Romania COVID-19 Statistics & Facts 
 
