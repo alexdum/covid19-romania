@@ -1,3 +1,6 @@
+[![Github All Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)]()
+
+
 # Romania COVID-19 Statistics & Facts 
 
 This dashboard shows recent developments of the COVID-19 pandemic in Romania via a map, summary tables, key figures and plots.
