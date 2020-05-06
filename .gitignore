@@ -8,3 +8,5 @@ covid19-romania.Rproj
 rsconnect/
 old/
 utils/days_analysis_date_oficiale.R
+.urs_cookiess
+.gitignore
