@@ -1,5 +1,3 @@
-[![Downloads](https://pepy.tech/badge/video2tfrecord)](https://pepy.tech/project/video2tfrecord)
-
 # Romania COVID-19 Statistics & Facts 
 
 This dashboard shows recent developments of the COVID-19 pandemic in Romania via a map, summary tables, key figures and plots.
