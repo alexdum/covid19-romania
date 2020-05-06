@@ -1,4 +1,4 @@
-[![Github All Releases](https://img.shields.io/github/downloads/alexdum/covid19-romania/v0.4-1/total.svg)]()
+[![Github All Releases](https://img.shields.io/github/downloads/alexdum/covid19-romania/v0.4-1/total?style=plastic)]()
 
 
 
