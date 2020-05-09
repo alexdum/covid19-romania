@@ -21,6 +21,7 @@ options(gargle_oob_default = TRUE, gargle_oauth_email = "alexandru.dumitrescu@gm
 # https://deanattali.com/
 # https://www.rivm.nl/en/novel-coronavirus-covid-19/current-information-about-novel-coronavirus-covid-19
 #relation.cases <- jsonlite::fromJSON("https://covid19.geo-spatial.org/api/statistics/getCaseRelations")
+# https://public.tableau.com/profile/bogdan.st.ncescu#!/vizhome/Covid19-Romania-v5/Statisticiglobale
 # url <-  jsonlite::fromJSON("https://services.arcgis.com/IjJbzDQF4hOiNl87/ArcGIS/rest/services/COVID_19_tabel_view/FeatureServer/0/query?where=1%3D1&objectIds=&time=&resultType=none&outFields=*&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&sqlFormat=none&f=pjson&token=")
 
 
