@@ -125,7 +125,7 @@ server <- function(input, output, session) {
       
       fig <- fig %>% plotly::layout(xaxis = x, yaxis = y,
                                     shapes = list(plotly.vline(x = mean.cont, y = 0.95)),
-                                    annotations = plotly.vtext(x = mean.cont, y = 30)) %>%
+                                    annotations = plotly.vtext(x = mean.cont, y = 60)) %>%
         plotly::config(displaylogo = FALSE,
         modeBarButtonsToRemove = c("zoomIn2d", "zoomOut2d", "lasso2d","handleCartesian",
                                    "select2d", "autoScale2d", "resetScale2d", "hoverClosestCartesian"))
@@ -183,7 +183,7 @@ server <- function(input, output, session) {
                                            line = list(color = '#FFFFFF', width = 1)))
       fig <- fig %>% plotly::layout(xaxis = x, yaxis = y,
                                     shapes = list(plotly.vline(x = mean.decs, y = 0.95)),
-                                    annotations = plotly.vtext(x = mean.decs, y = 30)) %>%
+                                    annotations = plotly.vtext(x = mean.decs, y = 60)) %>%
         plotly::config(displaylogo = FALSE,
                        modeBarButtonsToRemove = c("zoomIn2d", "zoomOut2d", "lasso2d","handleCartesian",
                                                   "select2d", "autoScale2d", "resetScale2d", "hoverClosestCartesian"))
