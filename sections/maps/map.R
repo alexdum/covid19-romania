@@ -53,7 +53,7 @@ observe({
     addCircleMarkers(
       lng          = ~longitude,
       lat          = ~latitude,
-      radius       = ~log((case_sum + 3)^(zoomLevel / 2.2)),
+      radius       = ~log((case_sum + 1.8)^(zoomLevel / 2.2)),
       stroke       = FALSE,
       color        = "red",
       fillOpacity  = 0.5,
@@ -141,7 +141,7 @@ observe({
   addCircleMarkers(
     lng          = ~longitude,
     lat          = ~latitude,
-    radius       = ~log((death_sum + 3)^(zoomLevel)/2),
+    radius       = ~log((case_sum + 1.8)^(zoomLevel / 2.2)),
     stroke       = FALSE,
     color        = "#636363",
     fillOpacity  = 0.5,
