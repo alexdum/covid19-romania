@@ -11,7 +11,7 @@
 #                                             format(max(dats.act), "%B %d, %Y")))
 
 output$mapno2_act.text <- renderText(paste0("Satellite Observed Tropospheric NO₂ Concentration - montlhy means January 01, 2020 - ", 
-                                            format(as.Date("2020-05-06"), "%B %d, %Y")))
+                                            format(as.Date("2020-07-05"), "%B %d, %Y")))
 
 # set color palette
 color_pal <- colorNumeric(rev(c('#0A0615','#190D3D','#a50026','#d73027','#f46d43','#fdae61','#fee090','#ffffbf','#e0f3f8','#abd9e9','#74add1','#4575b4')),
