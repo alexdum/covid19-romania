@@ -63,7 +63,7 @@ server <- function(input, output, session) {
         dySeries("Morti pe zi", label = "Deaths", color  = "#636363", stepPlot   = T, strokeWidth = 2) %>%
         dyOptions(stackedGraph = T) %>%
         dyLegend(show = "follow") %>%
-        dyRangeSelector(height = 40, dateWindow = c(max(as.Date(daily.cases.days$Data)) - 70, as.Date(max(daily.cases.days$Data))))
+        dyRangeSelector(height = 40, dateWindow = c(max(as.Date(daily.cases.days$Data)) - 170, as.Date(max(daily.cases.days$Data))))
       
     })
     
